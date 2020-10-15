@@ -17,8 +17,8 @@ inputs:
 runs:
   using: "composite"
   steps: 
-    - name: Install Cabal2Nix
+    - name: "Install Cabal2Nix"
       run: nix-env -iA haskellPackages.cabal2nix
-    - name: Running the integration test
+    - name: "Running the integration test"
       run: ${{ github.action_path }}/run-action.sh
       shell: bash
