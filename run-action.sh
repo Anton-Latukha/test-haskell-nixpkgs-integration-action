@@ -18,3 +18,4 @@ lineToInsert='  integratedDerivation = self.callPackage ../project-derivation.ni
 # Modify the file
 sed -i "$lineNumToInsertAt"'i'"$lineToInsert" "$integrationPointFile"
 
+nix-build . -A haskellPackages.integratedDerivation
