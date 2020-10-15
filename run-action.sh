@@ -14,3 +14,4 @@ sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' "$integrationPointFile"
 # Store the number of lines in the file
 lineNumToInsertAt="$(wc -l "$integrationPointFile" | cut -f1 -d' ')"
 
+lineToInsert='  integratedDerivation = self.callPackage ../project-derivation.nix {};'
