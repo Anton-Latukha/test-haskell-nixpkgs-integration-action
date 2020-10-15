@@ -1,14 +1,6 @@
 name: 'Testing build inside Nixpkgs.'
 description: |
   Imports the project Cabal description into the Nixpkgs store and runs a build inside Nixpkgs.
-  Since there are differences between the projet-local and result derivations projects build in the Nixpkgs.
-  Test ensures that project after the Hackage release would properly autointegrate through the pipeline into Nixpkgs.
-  (
-    Requires Nix/`cachix/install-nix-action` being installed before it, AKA, please add a run step:
-    ```yaml
-    - name: Install Nix
-      uses: cachix/install-nix-action@v10
-    ```
 inputs:
   rev:
     description: 'Nixpkgs revision'
