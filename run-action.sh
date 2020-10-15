@@ -8,3 +8,6 @@ cd "nixpkgs-$rev" || exit 1
 
 integrationPointFile='pkgs/development/haskell-modules/non-hackage-packages.nix'
 
+# Remove black lines from the end of the file
+sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' "$integrationPointFile"
+
