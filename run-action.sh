@@ -15,3 +15,6 @@ sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' "$integrationPointFile"
 lineNumToInsertAt="$(wc -l "$integrationPointFile" | cut -f1 -d' ')"
 
 lineToInsert='  integratedDerivation = self.callPackage ../project-derivation.nix {};'
+# Modify the file
+sed -i "$lineNumToInsertAt"'i'"$lineToInsert" "$integrationPointFile"
+
