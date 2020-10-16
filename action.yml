@@ -1,5 +1,5 @@
 name: 'Run automatic integration test of the Haskell project into Nixpkgs.'
-description: Runs the integration and gives the result. Shows the state, predicts would the project's release to Hackage work inside Nixpkgs.
+description: Gives the result of integration. Predicts would the project's release to Hackage work inside Nixpkgs.
 inputs:
   rev:
     description: 'Nixpkgs revision'
