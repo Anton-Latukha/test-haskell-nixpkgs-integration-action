@@ -1,6 +1,5 @@
-name: 'Testing build inside Nixpkgs.'
-description: |
-  Imports the project Cabal description into the Nixpkgs store and runs a build inside Nixpkgs.
+name: 'Run automatic integration test of the Haskell project into Nixpkgs.'
+description: Runs the integration and gives the result. Shows the state, predicts would the project's release to Hackage work inside Nixpkgs.
 inputs:
   rev:
     description: 'Nixpkgs revision'
