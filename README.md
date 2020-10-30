@@ -1,12 +1,17 @@
-# test-haskell-nixpkgs-integration-action
-GitHub Action that actively tests the project abilty to integrate and work in current official Nixpkgs environemt
+# Automatic Nixpkgs integration test for Haskell projects
 
-Since there are differences between the projet-local and result derivations projects build in the Nixpkgs.
+GitHub Action that runs the integration of the project in Nixpkgs store.
 
-Test ensures that project after the Hackage release would properly autointegrate through the pipeline into Nixpkgs.
+Test ensures that project after the Hackage release would properly autointegrate through the Nixpkgs pipeline into Nixpkgs.
 
-Requires Nix/`cachix/install-nix-action` being installed before it, AKA, please add a run step:
+Requires to trun Nix being installed before it.
+Example of use:
 ```yaml
 - name: Install Nix
-  uses: cachix/install-nix-action@v10
+  uses: cachix/install-nix-action@v11
+  with:
+    nix_path: "nixpkgs=channel:nixos-unstable"
+
+- name: Run Nixpkgs integration test
+  uses: Anton-Latukha/test-haskell-nixpkgs-integration-action
 ```
