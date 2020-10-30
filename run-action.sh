@@ -3,7 +3,6 @@
 rev=${rev:-'master'}
 
 projectDir=$(pwd)
-projectDirName=basename "$projectDir"    # This is a name of the project.
 cabal2nix . > project-derivation.nix
 cd ..
 curl -L "https://github.com/NixOS/nixpkgs/archive/$rev.tar.gz" | tar -xz
@@ -21,6 +20,7 @@ lineToInsert='  integratedDerivation = self.callPackage '"$projectDir"'/project-
 # Modify the file
 sed -i "$lineNumToInsertAt"'i'"$lineToInsert" "$integrationPointFile"
 
+cat "$projectDir/project-derivation.nix"
 cat "$integrationPointFile"
 
 nix-build . -A haskellPackages.integratedDerivation
