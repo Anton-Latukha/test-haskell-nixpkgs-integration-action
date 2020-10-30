@@ -17,8 +17,10 @@ sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' "$integrationPointFile"
 # Store the number of lines in the file
 lineNumToInsertAt="$(wc -l "$integrationPointFile" | cut -f1 -d' ')"
 
-lineToInsert="  integratedDerivation = self.callPackage ../$projectDirName/project-derivation.nix {};"
+lineToInsert='  integratedDerivation = self.callPackage '"$projectDir"'/project-derivation.nix {};'
 # Modify the file
 sed -i "$lineNumToInsertAt"'i'"$lineToInsert" "$integrationPointFile"
+
+cat "$integrationPointFile"
 
 nix-build . -A haskellPackages.integratedDerivation
