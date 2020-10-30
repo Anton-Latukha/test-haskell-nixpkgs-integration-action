@@ -15,3 +15,11 @@ Example of use:
 - name: Run Nixpkgs integration test
   uses: Anton-Latukha/test-haskell-nixpkgs-integration-action
 ```
+
+Available options:
+
+```yaml
+  # Optionally declare the Nixpkgs revision, by default Nixpkgs "master" is used to run integration.
+  with:
+    rev: "master"
+```

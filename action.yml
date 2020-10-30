@@ -12,5 +12,5 @@ runs:
       run: nix-env -f '<nixpkgs>' -iA haskellPackages.cabal2nix
       shell: bash
     - name: "Running the integration test"
-      run: ${{ github.action_path }}/run-action.sh
+      run: "${{ github.action_path }}/run-action.sh"
       shell: bash
