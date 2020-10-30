@@ -9,7 +9,7 @@ runs:
   using: "composite"
   steps: 
     - name: "Install Cabal2Nix"
-      run: nix-env -iA nixpkgs.haskellPackages.cabal2nix
+      run: nix-env -f '<nixpkgs>' -iA haskellPackages.cabal2nix
       shell: bash
     - name: "Running the integration test"
       run: ${{ github.action_path }}/run-action.sh
