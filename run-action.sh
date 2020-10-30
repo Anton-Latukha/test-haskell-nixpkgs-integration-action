@@ -6,7 +6,9 @@ projectDir=$(pwd)
 projectDirName=$(basename "$projectDir")
 derivationName=integratedDerivation
 projectDerivationFile=project-derivation.nix
+echo "Project PWD: $pwd"
 cd ..
+echo "Now PWD is: $pwd"
 cabal2nix ./"$projectDir" > "$projectDerivationFile"
 # IDK why, but particularly inside CI Tar complains the stdin not being the tar archive, but then unarchives it, who would have thought.
 curl -L "https://github.com/NixOS/nixpkgs/archive/$rev.tar.gz" | tar -xz
