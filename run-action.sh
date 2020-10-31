@@ -7,6 +7,7 @@ echo "Project directory: $projectDir"
 projectDirName=$(basename "$projectDir")
 derivationName=integratedDerivation
 projectDerivationFile=project-derivation.nix
+nix-env -i -A nixpkgs.nix-prefetch-scripts
 cabal2nix . > "$projectDerivationFile"
 cd ..
 echo "Now directory is ground dir: $(pwd)"
@@ -28,6 +29,7 @@ lineToInsert=" $derivationName = self.callPackage ../../../$projectDirName/$proj
 # Modify the file
 sed -i "$lineNumToInsertAt"'i'"$lineToInsert" "$integrationPointFile"
 
+echo "Checking derivation forle: $(type "$projectDir/$projectDerivationFile")"
 cat "$projectDir/$projectDerivationFile"
 cat "$integrationPointFile"
 
