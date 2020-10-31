@@ -14,6 +14,9 @@ runs:
     - name: "Install Cabal2Nix"
       run: nix-env -f '<nixpkgs>' -Ai haskellPackages.cabal2nix
       shell: bash
+    - name: "Install GZip"
+      run: sudo apt install -y gzip
+      shell: bash
     - name: "Running the integration test"
       run: "${{ github.action_path }}/run-action.sh"
       shell: bash
