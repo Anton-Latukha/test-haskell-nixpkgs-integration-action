@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+ls
+
 rev=${rev:-master}
 
 projectDir=$(pwd)
@@ -10,7 +12,10 @@ ls
 projectDirName=$(basename "$projectDir")
 derivationName=integratedDerivation
 projectDerivationFile=project-derivation.nix
+cabal2nix .
 cabal2nix . > "$projectDerivationFile"
+cat "$projectDerivationFile"
+
 cd ..
 echo "Now directory is ground dir: $(pwd)"
 
@@ -37,8 +42,7 @@ lineToInsert=" $derivationName = self.callPackage ../../../$projectDirName/$proj
 # Modify the file
 sed -i "$lineNumToInsertAt"'i'"$lineToInsert" "$integrationPointFile"
 
-echo "Checking derivation forle: $(type "$projectDir/$projectDerivationFile")"
-cat "$projectDir/$projectDerivationFile"
+echo "Checking derivation file: $(type "$projectDir/$projectDerivationFile")"
 cat "$integrationPointFile"
 
 nix-build . -A "haskellPackages.$derivationName"
