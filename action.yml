@@ -7,9 +7,12 @@ inputs:
     default: 'master'
 runs:
   using: "composite"
-  steps: 
+  steps:
+    - name: "Install Nix-prefetch scripts"
+      run: nix-env -f <nixpkgs> -Ai nixpkgs.nix-prefetch-scripts
+      shell: bash
     - name: "Install Cabal2Nix"
-      run: nix-env -f '<nixpkgs>' -iA haskellPackages.cabal2nix
+      run: nix-env -f '<nixpkgs>' -Ai haskellPackages.cabal2nix
       shell: bash
     - name: "Running the integration test"
       run: "${{ github.action_path }}/run-action.sh"
