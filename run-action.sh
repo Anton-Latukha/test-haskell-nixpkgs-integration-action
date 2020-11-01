@@ -7,13 +7,14 @@ rev=${rev:-master}
 projectDir=$(pwd)
 echo "Project directory: $projectDir"
 
-ls
-
 projectDirName=$(basename "$projectDir")
 derivationName=integratedDerivation
 projectDerivationFile=project-derivation.nix
 cabal2nix .
 cabal2nix . > "$projectDerivationFile"
+
+ls
+
 cat "$projectDerivationFile"
 
 cd ..
@@ -33,7 +34,7 @@ ls
 integrationPointFile=pkgs/development/haskell-modules/non-hackage-packages.nix
 
 # Remove black lines from the end of the file
-sed -i -e :a -e '/^\n*$/{$d;N;ba' -e '}' "$integrationPointFile"
+sed -e :a -e '/^\n*$/{$d;N;ba' -e '}' "$integrationPointFile" > "$integrationPointFile"
 
 # Store the number of lines in the file
 lineNumToInsertAt=$(wc -l "$integrationPointFile" | cut -f1 -d' ')
@@ -41,8 +42,8 @@ lineNumToInsertAt=$(wc -l "$integrationPointFile" | cut -f1 -d' ')
 lineToInsert=" $derivationName = self.callPackage ../../../$projectDirName/$projectDerivationFile {};"
 # Modify the file
 sed -i "$lineNumToInsertAt"'i'"$lineToInsert" "$integrationPointFile"
+cat "$integrationPointFile"
 
 echo "Checking derivation file: $(type "$projectDir/$projectDerivationFile")"
-cat "$integrationPointFile"
 
 nix-build . -A "haskellPackages.$derivationName"
