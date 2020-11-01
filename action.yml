@@ -5,6 +5,9 @@ inputs:
     description: 'Nixpkgs revision'
     required: False
     default: 'master'
+branding:
+  icon: 'truck'
+  color: 'purple'
 runs:
   using: "composite"
   steps:
