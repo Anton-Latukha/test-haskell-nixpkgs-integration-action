@@ -33,15 +33,19 @@ ls
 
 integrationPointFile=pkgs/development/haskell-modules/non-hackage-packages.nix
 
+cp "$integrationPointFile" tmpFile
 # Remove black lines from the end of the file
-sed -e :a -e '/^\n*$/{$d;N;ba' -e '}' "$integrationPointFile" > "$integrationPointFile"
+sed -e :a -e '/^\n*$/{$d;N;ba' -e '}' tmpFile > "$integrationPointFile"
+rm tmpFile
 
 # Store the number of lines in the file
 lineNumToInsertAt=$(wc -l "$integrationPointFile" | cut -f1 -d' ')
 
 lineToInsert=" $derivationName = self.callPackage ../../../$projectDirName/$projectDerivationFile {};"
 # Modify the file
-sed -i "$lineNumToInsertAt"'i'"$lineToInsert" "$integrationPointFile"
+cp "$integrationPointFile" tmpFile
+sed "$lineNumToInsertAt"'i'"$lineToInsert" tmpFile > "$integrationPointFile"
+rm tmpFile
 cat "$integrationPointFile"
 
 echo "Checking derivation file: $(type "$projectDir/$projectDerivationFile")"
