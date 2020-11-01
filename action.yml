@@ -1,5 +1,5 @@
-name: 'Run automatic integration test of the Haskell project into Nixpkgs.'
-description: Gives the result of integration. Predicts would the project's release to Hackage work inside Nixpkgs.
+name: 'Direct integration & build inside Nixpkgs'
+description: Gives the result of the integration. Predicts would the project's release to Hackage directly integrate into Nixpkgs.
 inputs:
   rev:
     description: 'Nixpkgs revision'
@@ -9,10 +9,10 @@ runs:
   using: "composite"
   steps:
     - name: "Install Nix-prefetch scripts"
-      run: nix-env -f '<nixpkgs>' -Ai nix-prefetch-scripts 1> /dev/null
+      run: nix-env -f '<nixpkgs>' -Ai nix-prefetch-scripts
       shell: bash
     - name: "Install Cabal2Nix"
-      run: nix-env -f '<nixpkgs>' -Ai haskellPackages.cabal2nix 1> /dev/null
+      run: nix-env -f '<nixpkgs>' -Ai haskellPackages.cabal2nix
       shell: bash
     - name: "Running the integration test"
       run: "${{ github.action_path }}/run-action.sh"
