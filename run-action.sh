@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
-
-ls
-
 rev=${rev:-master}
 
 projectDir=$(pwd)
-echo "Project directory: $projectDir"
-
 projectDirName=$(basename "$projectDir")
 derivationName=integratedDerivation
 projectDerivationFile=project-derivation.nix
@@ -15,6 +10,7 @@ cabal2nix . > "$projectDerivationFile"
 
 cd ..
 
+# Loading Nixpkgs
 curl -L "https://github.com/NixOS/nixpkgs/archive/$rev.tar.gz" | tar -xz
 nixpkgsDir=nixpkgs-$rev
 cd "$nixpkgsDir" || exit 1
