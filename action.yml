@@ -1,4 +1,4 @@
-name: 'Direct integration & build inside Nixpkgs'
+name: 'Automatic Haskell project integration test to Nixpkgs'
 description: Gives the result of the integration. Predicts would the project's release to Hackage directly integrate into Nixpkgs.
 inputs:
   rev:
