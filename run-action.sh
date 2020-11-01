@@ -27,4 +27,4 @@ lineNumToInsertAt=$(wc -l "$integrationPointFile" | cut -f1 -d' ')
 lineToInsert=" $derivationName = self.callPackage ../../../../$projectDirName/$projectDerivationFile {};"
 sed -i "$lineNumToInsertAt"'i'"$lineToInsert" "$integrationPointFile"
 
-nix-build . -A "haskellPackages.$derivationName"
+nix-build . -A "haskellPackages.$derivationName" && echo '\nIntegration successful.\n\n'
