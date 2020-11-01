@@ -41,7 +41,7 @@ rm tmpFile
 # Store the number of lines in the file
 lineNumToInsertAt=$(wc -l "$integrationPointFile" | cut -f1 -d' ')
 
-lineToInsert=" $derivationName = self.callPackage ../../../$projectDirName/$projectDerivationFile {};"
+lineToInsert=" $derivationName = self.callPackage ../../../../$projectDirName/$projectDerivationFile {};"
 # Modify the file
 cp "$integrationPointFile" tmpFile
 sed "$lineNumToInsertAt"'i'"$lineToInsert" tmpFile > "$integrationPointFile"
