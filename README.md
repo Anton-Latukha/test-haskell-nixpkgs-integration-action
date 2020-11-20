@@ -43,3 +43,8 @@ jobs:
       with:
         rev: "master"
 ```
+
+If test fails - the project needs derivation customization inside Nixpkgs, most probably in `NixOS/nixpkgs: pkgs/development/haskell-modules/configuration-common.nix`.
+Links:
+  - [Official Haskell Nixpkgs manual on it](https://haskell4nix.readthedocs.io/nixpkgs-developers-guide.html#fixing-broken-haskell-packages).
+  - [Peti's video "How to Fix Broken Haskell Packages in Nix"](https://www.youtube.com/watch?v=KLhkAEk8I20).
