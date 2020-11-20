@@ -1,8 +1,8 @@
 # Automatic Haskell project Nixpkgs integration test
 
-CI action runs the integration & build of the project inside Nixpkgs store.
+GitHub CI action.
 
-Test is equivalent to the process of project Hackage release and import of it into Nixpkgs. So the test ensures that the project after the Hackage release would properly trickle-down and through the Nixpkgs pipeline autointegrate into Nixpkgs. If test fails - it means the project inside Nixpkgs needs derivation customization, most probably in `NixOS/nixpkgs: pkgs/development/haskell-modules/configuration-common.nix`
+Runs the automatic integration & build of the project inside Nixpkgs store.
 
 Example of use:
 `.github/workflows/Nixpkgs-integration.yml`
