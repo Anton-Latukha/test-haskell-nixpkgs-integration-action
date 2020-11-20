@@ -4,6 +4,10 @@ GitHub CI action.
 
 Runs the automatic integration & build of the project inside Nixpkgs store.
 
+Test is equivalent to the process of projects Hackage release and its automatic Nixpkgs import of it into the store.
+
+Main agenda of the test is to ensure on the result of the Hackage release to Nixpkgs pipeline autointegration before making the Hackage release.
+
 Example of use:
 `.github/workflows/Nixpkgs-integration.yml`
 ```yaml
