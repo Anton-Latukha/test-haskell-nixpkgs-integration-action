@@ -41,7 +41,7 @@ jobs:
       with:
         nix_path: "nixpkgs=channel:nixos-unstable"
 
-    - name: "Run Nixpkgs integration test"
+    - name: "Run clean Nixpkgs integration test"
       uses: Anton-Latukha/test-haskell-nixpkgs-integration-action@v1
       # Optionally declare the Nixpkgs revision, by default Nixpkgs "master" is used to run the integration.
       with:
