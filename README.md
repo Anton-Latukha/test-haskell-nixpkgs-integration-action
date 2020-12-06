@@ -24,6 +24,7 @@ jobs:
   build10:
     name: "Integration test"
     runs-on: ubuntu-latest
+    continue-on-error: true
 
     steps:
     - name: "Git checkout"
